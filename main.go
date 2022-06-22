@@ -20,10 +20,12 @@ var todos = []todo{
 	{Id: 2, Title: "Task 3", Completed: false},
 }
 
+// Returns all todos
 func getTodos(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, todos)
 }
 
+// Creates a todo
 func createTodo(c *gin.Context) {
 	var newTodo todo
 
@@ -36,6 +38,7 @@ func createTodo(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, newTodo)
 }
 
+// Updates the todo with the given id.
 func updateTodo(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	for i, todo := range todos {
@@ -47,6 +50,7 @@ func updateTodo(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, todos)
 }
 
+// Deletes the todo with the given id.
 func deleteTodo(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	fmt.Println(id)
